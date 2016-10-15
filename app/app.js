@@ -28,17 +28,20 @@
                 controller: 'AllClassroomsController',
                 controllerAs: 'vm'
             })
-            .state('classroom_summary', {
+            .state('classroom_parent', {
+                abstract: true,
                 url: '/classrooms/:id',
-                templateUrl: 'app/templates/classroom.html',
+                templateUrl: '/app/templates/classroom_parent.html',
                 controller: 'ClassroomController',
                 controllerAs: 'vm'
             })
-            .state('classroom_detail', {
-                url: '/classrooms/{id}/detail/{month}',
-                templateUrl: 'app/templates/classroomDetail.html',
-                controller: 'ClassroomController',
-                controllerAs: 'vm'
+            .state('classroom_parent.classroom_summary', {
+                url: '/summary',
+                templateUrl: 'app/templates/classroom.html'
+            })
+            .state('classroom_parent.classroom_detail', {
+                url: '/detail/{month}',
+                templateUrl: 'app/templates/classroomDetail.html'                
             })
             .state('activities', {
                 url: '/activities',
